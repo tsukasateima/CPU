@@ -1,0 +1,60 @@
+module cs_generator(z,inst,);
+input [31:0]inst;
+output reg RegWr,RegDst,jal,MemtoReg,shift,AluSrc,Extop,WrEn;
+output reg [1:0]pcsrc;
+output reg [3:0]AluCtr
+always@(inst)
+begin 
+	if(inst[31:26]==6'b000000)
+	begin
+		case(inst[5:0])
+		6'b100000: //add指令控制信号
+		{RegWr,RegDst,jal,MemtoReg,shift,AluSrc,Extop,AluCtr,WrEn,pcsrc}='b100000xx000000;
+		6'b100010：//sub
+		{RegWr,RegDst,jal,MemtoReg,shift,AluSrc,Extop,AluCtr,WrEn,pcsrc}='b100000xx100000;
+		6'b100100: //and
+		{RegWr,RegDst,jal,MemtoReg,shift,AluSrc,Extop,AluCtr,WrEn,pcsrc}='b100000xx001000;
+		6'b100101://or
+		{RegWr,RegDst,jal,MemtoReg,shift,AluSrc,Extop,AluCtr,WrEn,pcsrc}='b100000xx101000;
+		6'b100110://xor
+		{RegWr,RegDst,jal,MemtoReg,shift,AluSrc,Extop,AluCtr,WrEn,pcsrc}='b100000xx010000;
+		6'b000000://sll左移
+		{RegWr,RegDst,jal,MemtoReg,shift,AluSrc,Extop,AluCtr,WrEn,pcsrc}='b100010x0011000;
+		6'b000010://srl逻辑右移
+		{RegWr,RegDst,jal,MemtoReg,shift,AluSrc,Extop,AluCtr,WrEn,pcsrc}='b100010x0111000;
+		6'b000011://sra算术右移
+		{RegWr,RegDst,jal,MemtoReg,shift,AluSrc,Extop,AluCtr,WrEn,pcsrc}='b100010x0111000;
+		6'b001000://jr寄存器跳转
+		{RegWr,RegDst,jal,MemtoReg,shift,AluSrc,Extop,AluCtr,WrEn,pcsrc}='b0xxxxxxxxxx010;
+	end
+	else 
+	begin
+		case(inst[31:26])
+		6'b001000://addi
+		{RegWr,RegDst,jal,MemtoReg,shift,AluSrc,Extop,AluCtr,WrEn,pcsrc}='b1100011x000000;
+		6'b001100://andi
+		{RegWr,RegDst,jal,MemtoReg,shift,AluSrc,Extop,AluCtr,WrEn,pcsrc}='b1100010x001000;
+		6'b001101://ori
+		{RegWr,RegDst,jal,MemtoReg,shift,AluSrc,Extop,AluCtr,WrEn,pcsrc}='b1100010x101000;
+		6'b001110://xori
+		{RegWr,RegDst,jal,MemtoReg,shift,AluSrc,Extop,AluCtr,WrEn,pcsrc}='b1100010x010000;
+		6'b100011://lw取整数数据字
+		{RegWr,RegDst,jal,MemtoReg,shift,AluSrc,Extop,AluCtr,WrEn,pcsrc}='b1101011x000000;
+		6'b101011://sw存整数数据字
+		{RegWr,RegDst,jal,MemtoReg,shift,AluSrc,Extop,AluCtr,WrEn,pcsrc}='b0xxx011x000100;
+		6'b000100://beq相等转移
+		if(~z) {RegWr,RegDst,jal,MemtoReg,shift,AluSrc,Extop,AluCtr,WrEn,pcsrc}='b0xxx001x010000;
+		else {RegWr,RegDst,jal,MemtoReg,shift,AluSrc,Extop,AluCtr,WrEn,pcsrc}='b0xxx001x010001;
+		6'b000101://bne不等转移
+		if(~z) {RegWr,RegDst,jal,MemtoReg,shift,AluSrc,Extop,AluCtr,WrEn,pcsrc}='b0xxx001x010001;
+		else {RegWr,RegDst,jal,MemtoReg,shift,AluSrc,Extop,AluCtr,WrEn,pcsrc}='b0xxx001x010000;
+		6'b001111://lui设置高位
+		{RegWr,RegDst,jal,MemtoReg,shift,AluSrc,Extop,AluCtr,WrEn,pcsrc}='b1100x1xx110000;
+		6'b000010://j跳转
+		{RegWr,RegDst,jal,MemtoReg,shift,AluSrc,Extop,AluCtr,WrEn,pcsrc}='b0xxxxxxxxxx011;
+		6'b000011://jal调用
+		{RegWr,RegDst,jal,MemtoReg,shift,AluSrc,Extop,AluCtr,WrEn,pcsrc}='b1x1xxxxxxxx011;
+	end
+
+end
+endmodule

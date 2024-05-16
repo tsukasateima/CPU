@@ -1,0 +1,10 @@
+module resetPC(pc,clk,reset,pnext)
+input [31:0]pc;
+input clk,reset;
+output reg [31:0]pnext;
+always@(negedge reset or posedge clk)
+begin
+	if(reset==0)pnext<=0;
+   else pnext<=pc;
+end
+endmodule

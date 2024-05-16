@@ -1,0 +1,32 @@
+/*
+该模块为主数据通路，通过调用各种模块来实现各种功能
+
+*/
+module main_dataflow(pc, inst);
+
+//调用控制信号产生器
+cs_genarator(inst, );
+
+//调用选择Rw的5位2选1选择器
+mux2x5(.in0(), .in1(), .ctr(), .out());
+
+//调用寄存器组
+regfile(.rf_clk(), .rw(), .ra(), .rb(), .busW(), .RegWr());
+
+//调用ALU
+alu(.a_(),.b_(),.aluc_(),.r(),.z());
+
+//调用选择器(ALUb端口)
+mux2x32(.in0(), .in1(), .ctr(), .out());
+
+//调用立即数扩位器
+extendedThirtyTwo(.in(), .out(), .flag());
+
+//调用加法器(实现pc+4)
+cla32 pcadder(.a(pc), .b('d4), .ci(0), .s(), .co());
+
+//调用加法器(实现分支跳转)
+cla branch_pcadder(.a(pc), .b(), .ci(0), .s(), .co());
+
+//调用选择器（ALUa端口）
+mux2x32(.in0(), .in1(), .ctr(), .out());

@@ -1,0 +1,12 @@
+module jal_f(jal, rw0, ctrout, rw)
+input jal;
+input [4:0] rw0;
+output ctrout;
+output [4:0] rw;
+always @(*)
+begin
+	if(jal) begin ctrout=1; rw='d31 end
+	else begin ctrout=0; rw=rw0 end
+end
+
+endmodule

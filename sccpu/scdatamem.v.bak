@@ -1,0 +1,11 @@
+module scdatamem(WrEn,Adr,Clk,DataIn,DataOut);
+input Clk;
+input [31:0]Adr;//地址是32位
+wire [31:0]data[31:0];
+assign DataOut=data[Adr[6:2]];
+always@(posedge clk)
+begin
+	if(WrEn)
+	data[Adr[6:2]]=DataIn;
+end
+endmodule

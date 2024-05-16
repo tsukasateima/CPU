@@ -1,0 +1,4 @@
+Info (10281): Verilog HDL Declaration information at main_dataflow.v(13): object "wren" differs only in case from object "WrEn" in the same scope
+Info (10281): Verilog HDL Declaration information at main_dataflow.v(47): object "cause" differs only in case from object "CAUSE" in the same scope
+Info (10281): Verilog HDL Declaration information at main_dataflow.v(108): object "epc" differs only in case from object "EPC" in the same scope
+Warning (10268): Verilog HDL information at toLowclk.v(5): always construct contains both blocking and non-blocking assignments

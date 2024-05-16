@@ -1,0 +1,45 @@
+m255
+K3
+13
+cModel Technology
+Z0 dE:\Zy\backup\CPUDesign\simulation\qsim
+vCPUDesign
+Z1 !s100 ;=1V^Q0N7[JEZeFk<NmbJ3
+Z2 IFmlIfoJkEY<gDbX9zR_>g3
+Z3 V8ofBQQ_?RID;jezj=Odc83
+Z4 dE:\Zy\backup\CPUDesign\simulation\qsim
+Z5 w1684898702
+Z6 8CPUDesign.vo
+Z7 FCPUDesign.vo
+L0 32
+Z8 OV;L;10.1e;51
+r1
+31
+Z9 !s90 -work|work|CPUDesign.vo|
+Z10 o-work work -O0
+Z11 n@c@p@u@design
+!i10b 1
+!s85 0
+Z12 !s108 1684898703.310000
+Z13 !s107 CPUDesign.vo|
+!s101 -O0
+vCPUDesign_vlg_vec_tst
+!i10b 1
+!s100 @8>Dlb38:CnLT;1<0ig9P2
+Il<g5BLkFe:4Y`IWZ91^;42
+Z14 VDh2kNKS2OfjQ[hgZgOH>n0
+R4
+w1684898698
+Z15 8Waveform.vwf.vt
+Z16 FWaveform.vwf.vt
+L0 30
+R8
+r1
+!s85 0
+31
+!s108 1684898706.772000
+!s107 Waveform.vwf.vt|
+Z17 !s90 -work|work|Waveform.vwf.vt|
+!s101 -O0
+R10
+Z18 n@c@p@u@design_vlg_vec_tst

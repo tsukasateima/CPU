@@ -1,0 +1,10 @@
+module toLowclk(inclk,outclk);
+input inclk;
+output reg outclk;
+reg [26:0] count;
+always @(posedge inclk)
+begin
+	if(count=='d24999999) begin count<=0; outclk<=~outclk; end
+	else count<=count+1;
+end
+endmodule
